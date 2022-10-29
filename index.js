@@ -29,19 +29,3 @@ app.use(
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
-
-// run Query in terminal
-/*
-const source = "{ hello, goodbye }";
-
-graphql({
-    schema: schema,
-    source,
-    rootValue: resolvers
-})
-.then((data) => {
-    console.log(data);
-})
-.catch(e => {
-    console.log(e);
-});  */
