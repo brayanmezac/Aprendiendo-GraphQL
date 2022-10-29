@@ -1,7 +1,7 @@
 
 const { graphql, buildSchema } = require('graphql')
-const express = require('express') 
-const { graphqlHTTP } = require('express-graphql')//Middleware de graphql
+const express = require('express')
+const { graphqlHTTP } = require('express-graphql')// Middleware de graphql
 const { append } = require('express/lib/response')
 
 const app = express()
@@ -16,35 +16,34 @@ const schema = buildSchema(`
     }
 `)
 
-//config resolvers
+// config resolvers
 
 const resolvers = {
-    hello:() => {
-        return 'hello world 🗺'
-    },
-    goodbye:() => {
-        return 'see you latter 👋'
-    }
+  hello: () => {
+    return 'hello world 🗺'
+  },
+  goodbye: () => {
+    return 'see you latter 👋'
+  }
 }
 
-//Run Query in express
+// Run Query in express
 
 app.use(
-    "/api",
-    graphqlHTTP({
-        schema,
-        graphiql: true,
-        rootValue: resolvers,
-    })
-);
+  '/api',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+    rootValue: resolvers
+  })
+)
 
-app.listen(port,()=>{
-    console.log(`http://localhost:${port}`)
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`)
 })
 
-
-//run Query in terminal
-/* 
+// run Query in terminal
+/*
 const source = "{ hello, goodbye }";
 
 graphql({
@@ -54,7 +53,7 @@ graphql({
 })
 .then((data) => {
     console.log(data);
-})  
+})
 .catch(e => {
     console.log(e);
 });  */
