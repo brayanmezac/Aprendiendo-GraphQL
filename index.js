@@ -4,6 +4,7 @@ const { graphqlHTTP } = require("express-graphql"); // Middleware de graphql
 const { append } = require("express/lib/response");
 const { readFileSync } = require("fs");
 const { join } = require("path");
+const resolvers = require("./lib/resolvers")
 
 const app = express();
 const port = process.env.port || 3000;
@@ -13,17 +14,6 @@ const port = process.env.port || 3000;
 const schema = buildSchema(
   readFileSync(join(__dirname, `lib`, `schema.graphql`), `utf-8`)
 );
-
-// config resolvers
-
-const resolvers = {
-  hello: () => {
-    return "hello world 🗺";
-  },
-  goodbye: () => {
-    return "see you latter 👋";
-  },
-};
 
 // Run Query in express
 
